@@ -119,7 +119,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
-                    <mainClass>com.bgagnonadam.contact.ws.ContactWsMain</mainClass>
+                    <mainClass>com.antoineleuf.telephony.ws.ContactWsMain</mainClass>
                 </configuration>
             </plugin>
         </plugins>

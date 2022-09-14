@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Contacts",
-    "description": "Based on lab for microservice in GLO-4003 and WAQ 22 presentation",
+    "description": "Based on lab for microservice in GLO-4003 and ElevateDev 22 presentation",
     "contact": {
       "name": "Antoine Lefrancois",
       "url": "https://github.com/AntoineLef",
