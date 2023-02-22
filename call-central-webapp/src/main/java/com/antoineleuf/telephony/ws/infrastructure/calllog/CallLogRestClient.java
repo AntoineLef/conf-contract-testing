@@ -24,6 +24,7 @@ public class CallLogRestClient implements CallLogApi {
     try {
       return callLogWs.request(MediaType.APPLICATION_JSON).get();
     } catch (ProcessingException exception) {
+      System.out.println(exception);
       return Response.status(Status.BAD_REQUEST).build();
     }
   }

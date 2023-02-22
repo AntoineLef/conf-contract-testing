@@ -10,7 +10,6 @@
     <name>telephony-app</name>
 
     <modules>
-        <module>calllog-ws</module>
         <module>contact-ws</module>
         <module>call-central-webapp</module>
     </modules>

@@ -26,29 +26,27 @@ import com.antoineleuf.telephony.ws.infrastructure.contact.ContactRestClient;
 
 /**
  * RESTApi responsible for the api gateway.
- * Normally, this is not done using Java. You'll use a reverse proxy with a subscribing functionality.
- * So your service says which kind of request they are able to respond to and at which address  
+ * Normally, this is not done using Java. You'll use a reverse proxy with a subscribing
+ * functionality.
+ * So your service says which kind of request they are able to respond to and at which address
  * 
  */
 @SuppressWarnings("all")
 public class TelephonyWsMain {
-  // would be found in a .property file.  
+  // would be found in a .property file.
   private static final String CALLLOG_WEB_SERVICE_URL = "http://localhost:8081/api";
 
   private static final String CONTACT_WEB_SERVICE_URL = "http://localhost:8082/api";
-  
-  private static final int HTTP_PORT = 8080;
 
+  private static final int HTTP_PORT = 8080;
 
   public static boolean isDev = true; // Would be a JVM argument or in a .property file
 
-  public static void main(String[] args)
-          throws Exception {
+  public static void main(String[] args) throws Exception {
 
     // Setup resources (API)
     ContactResource contactResource = createContactResource();
     CallLogResource callLogResource = createCallLogResource();
-    
 
     // Setup API context (JERSEY + JETTY)
     ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -62,10 +60,10 @@ public class TelephonyWsMain {
         resources.add(callLogResource);
         return resources;
       }
-      
+
     });
     resourceConfig.register(CORSResponseFilter.class);
-    
+
     ServletContainer servletContainer = new ServletContainer(resourceConfig);
     ServletHolder servletHolder = new ServletHolder(servletContainer);
     context.addServlet(servletHolder, "/*");
@@ -93,7 +91,7 @@ public class TelephonyWsMain {
     // Setup resources' dependencies (DOMAIN + INFRASTRUCTURE)
     ContactApi contactApi = new ContactRestClient(CONTACT_WEB_SERVICE_URL);
 
-    return new ContactResourceImpl(contactApi); 
+    return new ContactResourceImpl(contactApi);
   }
 
   private static CallLogResource createCallLogResource() {
